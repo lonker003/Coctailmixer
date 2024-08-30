@@ -1,12 +1,9 @@
 import time
 import smbus
 
-class heat:
-  
+class Heat:
   def __init__(self):
-
-    self.address = 0x38 #Put your device's address here
-
+    self.address = 0x38
     self.i2cbus = smbus.SMBus(1)
     time.sleep(0.5)
 
@@ -15,7 +12,7 @@ class heat:
       print('Initialization error')
   
   
-  def read(self):
+  def read(self) -> float:
     self.i2cbus.write_i2c_block_data(self.address,0xac,[0x33,0x00])
     time.sleep(0.1)
 
@@ -27,5 +24,4 @@ class heat:
     Hraw = ((data[3] & 0xf0) >> 4) + (data[1] << 12) + (data[2] << 4)
     humidity = 100*float(Hraw)/2**20
 
-    #print('Temperator:' , temperature , 'Luftfeuchtikgeit: ', humidity)
     return temperature
