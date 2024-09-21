@@ -1,0 +1,173 @@
+@keyframes gradient-shift-1 {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes gradient-shift-2 {
+    0% { background-position: 100% 0%; }
+    50% { background-position: 0% 100%; }
+    100% { background-position: 100% 0%; }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    background: linear-gradient(45deg, 
+                #8a2be2, #9370db, #ba55d3, #9932cc,
+                #8a2be2, #9370db, #ba55d3, #9932cc);
+    background-size: 400% 400%;
+    animation: gradient-shift-1 18s ease infinite,
+               gradient-shift-2 12s ease-in-out infinite;
+}
+
+.nav-sidebar {
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(135deg, 
+                #8a2be2, #9370db, #ba55d3, #9932cc,
+                #8a2be2, #9370db, #ba55d3, #9932cc);
+    background-size: 400% 400%;
+    animation: gradient-shift-1 18s ease infinite,
+               gradient-shift-2 12s ease-in-out infinite;
+}
+
+.nav-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    flex-grow: 1;
+}
+
+.nav-bottom {
+    margin-top: 20px;
+}
+
+.nav-sidebar button {
+    width: 100%;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.nav-sidebar button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.nav-sidebar button img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50px;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 400px);
+    grid-template-rows: repeat(4, auto);
+    gap: 40px;
+    padding: 20px;
+    align-content: center;
+}
+
+.button-container button {
+    width: 100%;
+    height: 100px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 80px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+    padding-left: 110px;  /* Platz für den Kreis lassen */
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.button-container button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.button-container button::before {
+    content: '';
+    position: absolute;
+    left: 10px;  /* Abstand zum linken Rand */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;  /* Durchmesser des Kreises */
+    height: 80px;  /* Durchmesser des Kreises */
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Individuelle Hintergrundbilder für jeden Button */
+#button1::before { background-image: url('Campari_Orange.jpg'); }
+#button2::before { background-image: url('Amaretto_Sour.jpg'); }
+#button3::before { background-image: url('Aviation.jpg'); }
+#button4::before { background-image: url('Bahama_Mama.jpg'); }
+#button5::before { background-image: url('Blue_Hawaii.jpg'); }
+#button6::before { background-image: url('Dirty_Martini.jpg'); }
+#button7::before { background-image: url('Continental_Sour.jpg'); }
+#button8::before { background-image: url('Dark_and_stormy.jpg'); }
+
+/* Neue Styles für die vertikale Füllstandsanzeige */
+.button-container button .progress-bar {
+    position: absolute;
+    right: 40px; /* Abstand vom rechten Rand des Buttons */
+    top: 5%; /* Ein wenig Abstand von oben */
+    bottom: 5%; /* Ein wenig Abstand von unten */
+    width: 10px; /* Breite der Füllstandsanzeige */
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.button-container button .progress-bar .fill {
+    width: 100%;
+    height: 0; /* Initialer Füllstand */
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: height 0.5s ease;
+    position: absolute;
+    bottom: 0; /* Startet von unten und füllt nach oben */
+}
+
+/* Styles für den vertikalen Text (Behälter-Beschriftung) */
+.button-container button .progress-label {
+    position: absolute;
+    right: 30px; /* Nähe der Füllstandsanzeige */
+    top: 120%; /* je höher desto weiter runter kommen alle Schriftzüge */
+    transform: rotate(90deg) translateX(-50%);
+    transform-origin: right center;
+    font-size: 12px;
+    color: white;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
