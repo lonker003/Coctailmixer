@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
+
+
 data_output = pd.read_table("output.txt")
 print(data_output.columns)
 
