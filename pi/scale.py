@@ -48,3 +48,4 @@ class Scale:
             time.sleep(0.1)
             
         return sum/20
+

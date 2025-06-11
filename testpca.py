@@ -9,4 +9,4 @@ def select_channel(channel):
     bus.write_byte(PCA9548_ADDR, 1 << channel)
 
 # Beispiel: Kanal 0 auswählen
-select_channel(0)
+select_channel(2)
